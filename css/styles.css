@@ -1,0 +1,145 @@
+/* Base styles for portfolio */
+body {
+  margin: 16px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+nav a {
+  margin-right: 8px;
+  text-decoration: none;
+}
+nav a[aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+}
+main {
+  max-width: 800px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Intro layout */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.intro-text {
+  flex: 2; /* text takes more space */
+}
+
+.intro-img img {
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+.back-to-top { margin-top: 8px; }
+.back-to-top a { text-decoration: none; }
+.back-to-top a:hover { text-decoration: underline; }
+
+/* --- Background mini gallery --- */
+.bg-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+.bg-item { 
+  margin: 0; 
+  text-align: center; 
+  max-width: 180px; 
+}
+.bg-item img {
+  width: 100%;
+  height: 120px;          /* keeps a tidy thumbnail */
+  object-fit: cover;      /* crops edges neatly */
+  border-radius: 8px;
+  display: block;
+}
+.bg-item.logo img {        /* logos need different sizing */
+  height: 80px;
+  object-fit: contain;    /* no cropping for logos */
+  background: #fff;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.bg-item figcaption {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Smaller thumbnails on phones */
+@media (max-width: 700px) {
+  .bg-item { max-width: 45%; }
+  .bg-item img { height: 100px; }
+}
+
+/* ===== Header / Nav styling ===== */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.site-nav .nav-main,
+.site-nav .nav-jumps {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+/* tidy nav links */
+header nav.site-nav a { text-decoration: none; color: inherit; }
+header nav.site-nav a:hover { text-decoration: underline; }
+header nav.site-nav a[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+
+/* make the second row a touch quieter */
+.site-nav .nav-jumps { font-size: 0.95rem; opacity: 0.9; }
+
+/* ===== Skip-link (only visible on keyboard focus) ===== */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus {
+  left: 12px; top: 12px;
+  width: auto; height: auto;
+  padding: 8px 12px; background: #fff;
+  border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.15);
+}
+
+/* ===== Optional: center the main column (nicer layout) ===== */
+main { max-width: 900px; margin: 0 auto; }
+
+/* ===== TCU Campus Gallery (text left, image right) ===== */
+.gallery-rows { display: grid; gap: 16px; }
+.gallery-row {
+  display: flex; gap: 16px; align-items: center;
+  background: #fff; border-radius: 12px; padding: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08); margin: 0;
+}
+.gallery-row figcaption { flex: 1; margin: 0; }
+.gallery-row figcaption strong { display: block; font-size: 1.1rem; margin-bottom: 6px; }
+.spot-desc { margin: 0; color: #333; }
+.gallery-row img {
+  flex: 0 0 220px; width: 220px; height: 150px;
+  object-fit: cover; border-radius: 8px; display: block;
+}
+@media (max-width: 700px) {
+  .gallery-row { flex-direction: column; align-items: flex-start; }
+  .gallery-row img { width: 100%; height: 200px; }
+}
+
+a, a:visited { color: #111; }
