@@ -2,160 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>About — Nina Heinemann | WRIT40363 Portfolio</title>
+  <title>Nina Heinemann De La Fuente — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="About page for Nina Heinemann’s WRIT40363 portfolio.">
+  <meta name="description" content="Portfolio site for WRIT40363 by Nina Heinemann De La Fuente.">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
 
-  <!-- (optional) keyboard shortcut to jump past the header -->
+<body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header>
-    <nav aria-label="Primary" class="site-nav">
-      <div class="nav-main">
-        <a href="index.html">Home</a> |
-        <a href="about.html" aria-current="page">About</a>
-      </div>
-      <div class="nav-jumps">
-        <a href="#skills">Skip to Skills</a> |
-        <a href="#gallery">Skip to Gallery</a> |
-        <a href="#resources">Skip to Resources</a>
-      </div>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
   </header>
 
   <main id="main" tabindex="-1">
-    <h1>About Me</h1>
 
-    <!-- Background -->
-    <section class="section-card" id="background">
-      <h2>Background</h2>
-      <p>
-        I’m Nina Heinemann from Guatemala, currently a senior at TCU. I study Communication
-        Studies with a minor in Digital Culture &amp; Data Analytics. I love blending
-        creativity, design, and strategy.
-      </p>
-
-      <!-- Background mini-gallery -->
-      <div class="bg-gallery" role="group" aria-label="Background images">
-        <figure class="bg-item">
-          <img src="images/guatemala.jpg" alt="Guatemala landscape, my home country">
-          <figcaption>Guatemala — where I’m from</figcaption>
-        </figure>
-
-        <figure class="bg-item">
-          <img src="images/fort-worth.jpg" alt="Fort Worth skyline near TCU">
-          <figcaption>Fort Worth — my second home</figcaption>
-        </figure>
-
-        <figure class="bg-item">
-          <img src="images/event-work.jpg" alt="Setting up details for a campus event">
-          <figcaption>Event &amp; design work</figcaption>
-        </figure>
-
-        <figure class="bg-item logo">
-          <img src="images/tcu-logo.png" alt="Texas Christian University logo">
-          <figcaption>TCU — my campus</figcaption>
-        </figure>
+    <section class="hero-wrap">
+      <div class="header_text">
+        <h1>About Me</h1>
+        <p class="tagline">Communication · Design · Data</p>
+        <p class="value">I’m passionate about bringing together creativity and strategy to create projects that connect with people and make an impact.</p>
+      </div>
+      <div class="header_pic">
+        <img src="images/profile.jpg" alt="Portrait of Nina Heinemann" />
       </div>
     </section>
 
-    <!-- Skills & Learning -->
-    <section class="section-card" id="skills">
-      <h2>Skills &amp; Learning</h2>
+
+    <section class="about section">
+      <h2 class="section-label">academic background</h2>
       <p>
-        I’ve worked in marketing, event coordination, and photography. In this course I’m
-        improving my skills with semantic HTML, accessibility, and Git workflows.
+        I’m Nina Heinemann, a senior at Texas Christian University, double-majoring in Communication Studies and Data Analytics &amp; Digital Culture. My studies allow me to explore the intersection of communication, media, and technology, developing both strong analytical and creative skills.
       </p>
     </section>
 
-    <!-- Goals -->
-    <section class="section-card" id="goals">
-      <h2>Goals</h2>
+   
+    <section class="about section">
+      <h2 class="section-label">interests</h2>
       <p>
-        My goal is to create a professional course portfolio, build confidence in explaining
-        my code, and eventually lead creative/marketing teams. Long term, I want to run my
-        own business combining design, communication, and technology.
+        I’m passionate about marketing, digital design, and data analytics — and I enjoy finding ways to bring these skills together. My experience includes managing social media, developing branding concepts, exploring web design, and using data to shape creative strategies. I bring adaptability and curiosity to every project, always willing to learn new tools and approaches.
       </p>
     </section>
 
-    <!-- Interests -->
-    <section class="section-card" id="interests">
-      <h2>Interests</h2>
+ 
+    <section class="about section">
+      <h2 class="section-label">goals</h2>
       <p>
-        I love interior design, photography, pilates/tennis, and spending time with friends
-        and family. I’m curious about digital culture and how people connect through
-        technology.
+        My long-term goal is to lead a marketing department and eventually establish my own business, where I can combine creativity, strategy, and leadership skills. Outside of work and academics, I enjoy photography, interior design, pilates, and tennis. I also value time with friends and family, which keeps me grounded and inspired.
       </p>
-    </section>
-
-    <!-- TCU Campus Gallery (jump target) -->
-    <section class="section-card" aria-labelledby="gallery">
-      <h2 id="gallery" tabindex="-1">TCU Campus Gallery</h2>
-
-      <div class="gallery-rows">
-        <figure class="gallery-row">
-          <figcaption>
-            <strong>Frog Fountain</strong>
-            <p class="spot-desc">
-              TCU’s most recognizable landmark in the Campus Commons. Students meet here,
-              take graduation photos, and celebrate big wins.
-            </p>
-          </figcaption>
-          <img src="images/tcu-frog-fountain.jpg" alt="Frog Fountain on the TCU campus at sunset">
-        </figure>
-
-        <figure class="gallery-row">
-          <figcaption>
-            <strong>University Commons</strong>
-            <p class="spot-desc">
-              The heart of campus—green space surrounded by residence halls and dining.
-              Hosts concerts, pep rallies, and everyday hangouts between classes.
-            </p>
-          </figcaption>
-          <img src="images/tcu-commons.jpg" alt="Students walking through the University Commons">
-        </figure>
-
-        <figure class="gallery-row">
-          <figcaption>
-            <strong>Amon G. Carter Stadium</strong>
-            <p class="spot-desc">
-              Home of Horned Frogs Football; seats about 46,000 fans. Big-game atmosphere,
-              great sightlines, and Fort Worth skyline views on clear nights.
-            </p>
-          </figcaption>
-          <img src="images/tcu-stadium.jpg" alt="Amon G. Carter Stadium exterior at TCU">
-        </figure>
-
-        <figure class="gallery-row">
-          <figcaption>
-            <strong>TCU Mary Couts Burnett Library</strong>
-            <p class="spot-desc">
-              Named for Mary Couts Burnett. Quiet floors, group rooms, research help, and
-              tech checkout—my favorite late-night study spot.
-            </p>
-          </figcaption>
-          <img src="images/tcu-library.jpg" alt="Mary Couts Burnett Library entrance at TCU">
-        </figure>
-      </div>
-    </section>
-
-    <!-- Resources -->
-    <section class="section-card" aria-labelledby="resources">
-      <h2 id="resources" tabindex="-1">Resources</h2>
-      <ul>
-        <li><a href="https://www.tcu.edu/" target="_blank" rel="noopener">Texas Christian University</a></li>
-        <li><a href="https://library.tcu.edu/" target="_blank" rel="noopener">TCU Library</a></li>
-        <li><a href="https://d2l.tcu.edu/" target="_blank" rel="noopener">TCU D2L</a></li>
-        <li><a href="https://developer.mozilla.org/" target="_blank" rel="noopener">MDN Web Docs</a></li>
-      </ul>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Nina Heinemann | WRIT40363 Portfolio</p>
+    <p>&copy; 2025 Nina Heinemann De La Fuente</p>
   </footer>
 </body>
 </html>
