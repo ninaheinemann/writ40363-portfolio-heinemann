@@ -1,11 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Merriweather:wght@400;700&display=swap');
-
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{ animation:none!important; transition:none!important; }
-}
-
-/* ===== Base / Tokens ===== */
+/* ---- Tokens ---- */
 :root{
   --navy:#40407c;
   --coral:#d64d4d;
@@ -14,6 +7,7 @@
   --white:#FFFFFF;
 }
 
+/* Basic reset */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -22,76 +16,6 @@ body{
   color:var(--charcoal);
   background:var(--beige);
 }
-
-/* ===== Nav ===== */
-nav{
-  display:flex; gap:1.25rem; justify-content:center;
-  padding:1rem 1.5rem; background:var(--navy);
-}
-nav a{color:var(--white); text-decoration:none; font-weight:600}
-nav a[aria-current="page"]{border-bottom:2px solid var(--coral)}
-nav a:hover{color:var(--coral)}
-
-/* ===== Hero (editorial split) ===== */
-.hero-wrap{
-  display:grid; gap:2rem; align-items:center;
-  grid-template-columns:1fr; padding:3rem 1.5rem; max-width:1100px; margin:0 auto;
-}
-.header_text h1{
-  font-family:"Monsteratt", system-ui, sans-serif;
-  font-weight:800; color:var(--navy); font-size:2.25rem; line-height:1.1;
-}
-.tagline{color:var(--coral); font-weight:700; margin:.5rem 0}
-.value{max-width:45ch; margin-top:.5rem}
-.header_pic img{
-  width:100%; height:auto; border-radius:12px; display:block;
-}
-
-/* Larger layout */
-@media (min-width: 880px){
-  .hero-wrap{grid-template-columns:1.25fr .75fr; padding:5rem 2rem}
-  .header_text h1{font-size:3rem}
-}
-
-/* ===== Sections ===== */
-.section{max-width:1100px; margin:0 auto; padding:3rem 1.5rem}
-.section-label{
-  font-family:"Montserrat", sans-serif; font-weight:800;
-  color:var(--coral); font-size:2rem; text-transform:lowercase; margin-bottom:1rem;
-}
-
-/* About */
-.cols{display:grid; gap:1rem}
-@media (min-width: 880px){ .cols{grid-template-columns:1fr 1fr 1fr} }
-
-/* Skills */
-.skill-columns{display:grid; gap:1.25rem}
-.skill-columns h3{
-  font-family:"Montserrat", sans-serif; color:var(--navy); margin-bottom:.25rem;
-}
-.skill-columns ul{list-style:disc; padding-left:1.25rem}
-@media (min-width: 880px){ .skill-columns{grid-template-columns:1fr 1fr 1fr} }
-
-/* Projects */
-.projects .project{
-  position:relative; padding:1.25rem 1.25rem 1.25rem 3.5rem; border-top:1px solid rgba(0,0,0,.08);
-}
-.project-meta{
-  position:absolute; left:0; top:1rem; color:var(--coral);
-  font-family:"Montserrat", sans-serif; font-weight:800; font-size:2rem;
-}
-.project-title{font-family:"Montserrat", sans-serif; color:var(--navy); font-size:1.35rem}
-.project-desc{margin:.25rem 0 .25rem}
-.project-tags{font-size:.95rem; opacity:.85}
-
-/* Contact */
-.contact-list{list-style:none}
-.contact-list li{margin:.25rem 0}
-.contact a{color:var(--navy); text-decoration:underline}
-.contact a:hover{color:var(--coral)}
-
-/* Footer */
-footer{background:var(--navy); color:var(--white); text-align:center; padding:2rem 1rem; margin-top:2rem}
 
 /* Skip link */
 .skip-link{
@@ -105,6 +29,190 @@ footer{background:var(--navy); color:var(--white); text-align:center; padding:2r
   clip:auto; clip-path:none; height:auto; width:auto; overflow:visible; white-space:normal;
 }
 
-/* Visible focus everywhere */
+/* Focus */
 :focus-visible{ outline:3px solid var(--coral); outline-offset:2px; }
 nav a:focus-visible{ background:rgba(255,255,255,.15); border-radius:8px; }
+
+/* Nav (Flexbox) */
+nav{
+  display:flex; gap:1.25rem; justify-content:center;
+  padding:1rem 1.5rem; background:var(--navy);
+}
+nav a{color:var(--white); text-decoration:none; font-weight:600}
+nav a[aria-current="page"]{border-bottom:2px solid var(--coral)}
+nav a:hover{color:var(--white); text-decoration:underline}
+
+/* Hero: mobile flex → grid on wide */
+.hero-wrap{
+  display:flex; flex-direction:column; gap:2rem; align-items:center;
+  padding:3rem 1.5rem; max-width:1100px; margin:0 auto;
+}
+.header_text h1{
+  font-family:"Montserrat", system-ui, sans-serif; /* fixed name */
+  font-weight:800; color:var(--navy); font-size:2.25rem; line-height:1.1;
+}
+.tagline{ color:var(--navy); font-weight:700; margin:.5rem 0; }
+.value{max-width:45ch; margin-top:.5rem}
+.header_pic img{ width:100%; height:auto; border-radius:12px; display:block; }
+
+@media (min-width: 880px){
+  .hero-wrap{display:grid; grid-template-columns:1.25fr .75fr; gap:2rem; padding:5rem 2rem}
+  .header_text h1{font-size:3rem}
+}
+
+/* Sections */
+.section{max-width:1100px; margin:0 auto; padding:3rem 1.5rem}
+.section-label{
+  font-family:"Montserrat", sans-serif; font-weight:800;
+  color:var(--coral); font-size:2rem; text-transform:lowercase; margin-bottom:1rem;
+}
+
+/* About */
+.cols{display:flex; flex-direction:column; gap:1rem}
+@media (min-width: 880px){ .cols{flex-direction:row} .cols > p{flex:1} }
+
+/* Skills: flex → grid */
+.skill-columns{display:flex; flex-direction:column; gap:1.25rem}
+.skill-columns h3{
+  font-family:"Montserrat", sans-serif; color:var(--navy); margin-bottom:.25rem;
+}
+.skill-columns ul{list-style:disc; padding-left:1.25rem}
+@media (min-width: 1024px){
+  .skill-columns{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1.25rem;
+  }
+}
+
+/* ---- Projects: clean grid with heading on its own row ---- */
+.projects{
+  display:grid;
+  gap:1.25rem;
+  grid-template-columns: 1fr;            /* mobile */
+  align-items:stretch;
+}
+
+/* make the section heading take a full row so cards start at column 1 */
+.projects > .section-label{
+  grid-column: 1 / -1;                   /* span all columns */
+  margin-bottom: .25rem;                 /* tighter spacing to cards */
+}
+
+@media (min-width: 820px){
+  .projects{ grid-template-columns: repeat(2, minmax(0,1fr)); }  /* tablet */
+}
+@media (min-width: 1200px){
+  .projects{ grid-template-columns: repeat(3, minmax(0,1fr)); }  /* desktop */
+}
+
+.projects .project{
+  position:relative;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  padding:2.25rem 1.25rem 1.25rem;       /* extra top for badge */
+  min-height: 210px;
+  overflow:hidden;
+}
+
+/* circular number badge */
+.project-meta{
+  position:absolute;
+  top:.6rem; left:.6rem;
+  width:2.2rem; height:2.2rem;
+  border-radius:9999px;
+  background:var(--coral);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family:"Montserrat", sans-serif;
+  font-weight:800;
+  font-size:1.1rem;
+  line-height:1;
+}
+
+/* text */
+.project-title{
+  font-family:"Montserrat", sans-serif;
+  color:var(--navy);
+  font-size:1.15rem;
+  line-height:1.25;
+  margin:.1rem 0 .35rem;
+}
+.project-desc{ margin:.2rem 0 .35rem; color:var(--charcoal); }
+.project-tags{ font-size:.95rem; opacity:.85; }
+
+/* optional: subtle hover polish */
+.projects .project:hover{
+  transform: translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+
+/* Text styles */
+.project-title{
+  font-family:"Montserrat", sans-serif;
+  color:var(--navy);
+  font-size:1.15rem;
+  line-height:1.25;
+  margin: .1rem 0 .35rem;
+}
+.project-desc{ margin:.2rem 0 .35rem; color:var(--charcoal); }
+.project-tags{ font-size:.95rem; opacity:.85; }
+
+
+/* Contact */
+.contact-list{list-style:none}
+.contact-list li{margin:.25rem 0}
+.contact a{color:var(--navy); text-decoration:underline}
+.contact a:hover{color:var(--coral)}
+
+/* Footer */
+footer{background:var(--navy); color:var(--white); text-align:center; padding:2rem 1rem; margin-top:2rem}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation:none!important; transition:none!important; }
+}
+
+
+/* About page gallery — neat, even cards */
+.gallery{
+  display:grid;
+  gap:1.25rem;
+  grid-template-columns: 1fr;              /* phone */
+}
+@media (min-width: 768px){
+  .gallery{ grid-template-columns: repeat(2, 1fr); }  /* tablet */
+}
+@media (min-width: 1100px){
+  .gallery{ grid-template-columns: repeat(3, 1fr); }  /* desktop */
+}
+
+.gallery figure{
+  background:#fff;
+  border-radius:14px;
+  padding:.75rem;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+  height:100%;
+}
+
+.gallery figure img{
+  width:100%;
+  aspect-ratio: 4 / 3;      /* uniform image window */
+  object-fit: cover;        /* tidy crops, no stretching */
+  border-radius:10px;
+  display:block;
+}
+
+.gallery figcaption{
+  font-size:.95rem;
+  line-height:1.45;
+  color:var(--charcoal);
+}
+
+/* show full image without cropping when needed */
+.gallery figure img.contain{ object-fit: contain; background:#f7f7f7; }

@@ -1,23 +1,36 @@
-# writ40363-portfolio-heinemann
+# Nina Heinemann De La Fuente — Portfolio
 
-# Portfolio — Nina Heinemann De La Fuente
+A simple, accessible personal portfolio built for WRIT 40363. It showcases my background, skills, selected projects, and contact info with a clean, mobile-first layout (HTML + CSS only).
 
-Accessible, mobile-first portfolio for WRIT40363.
+## Live Site
+**GitHub Pages:** https://ninaheinemann.github.io/writ40363-portfolio-heinemann/
 
-## Tech
-- HTML5 (semantic structure, headings, landmarks)
-- CSS (Flexbox/Grid, tokens, focus styles, reduced motion)
-- Git/GitHub + GitHub Pages
+**Repository:** https://github.com/ninaheinemann/writ40363-portfolio-heinemann
 
-## Live
-- Coming soon (GitHub Pages)
+## Project Structure
 
-## A11y Notes
-- Skip link, visible focus
-- Color contrast (navy on beige for body text)
-- Descriptive link text; meaningful alt
+## Technologies Used
+- HTML5 (semantic elements, proper headings)
+- CSS3 (Flexbox & Grid, responsive layout)
+- Git & GitHub (version control)
+- GitHub Pages (deployment)
 
-## Validate
-- HTML: https://validator.w3.org/
-- CSS: https://jigsaw.w3.org/css-validator/
-- Contrast: https://webaim.org/resources/contrastchecker/
+## Features
+- **Mobile-first** responsive design
+- **Accessibility:** skip link, semantic structure, descriptive alt text, visible focus states, good color contrast
+- **Clean navigation** and scannable content
+- **Projects** section with consistent card layout
+- **About** page with gallery and captions
+
+## How to Run Locally
+1. Download or clone this repo.
+2. Open `index.html` in your browser.
+3. No build step required.
+
+## Notes / Improvements (Next Iteration)
+- Add more projects with images and links
+- Light/dark theme toggle
+- Form-based contact section
+
+## License
+This site is for course work and personal use.
