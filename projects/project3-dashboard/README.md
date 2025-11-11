@@ -21,7 +21,7 @@ Individual course projects are preserved in the `projects/` directory:
 
 - **[Project 1: Personal Portfolio](projects/project1-original/)** - Original portfolio submission featuring HTML and CSS fundamentals
 - **[Project 2: Local Favorites Tracker](projects/project2-tracker/)** - Interactive application using JavaScript, DOM manipulation, and localStorage
-- **[Project 3: Personal Data Dashboard](projects/project3-dashboard/)** - Coming soon!
+- **[Project 3: Personal Data Dashboard](projects/project3-dashboard/)** - Interactive dashboard using the `fetch()` API to display external JSON data (starting with a weather widget)
 
 ## Technologies Used
 
