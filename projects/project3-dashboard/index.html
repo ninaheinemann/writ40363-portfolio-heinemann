@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Dashboard</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="dashboard">
-        <header>
-            <h1>My Personal Dashboard</h1>
-        </header>
+  <div class="dashboard">
+    <header>
+      <h1>My Personal Dashboard</h1>
+    </header>
 
-        <main class="widgets-container">
-            <!-- Weather Widget -->
-            <section class="widget weather-widget">
-                <h2>Current Weather</h2>
-                <div id="weather-display">
-                    Loading weather data...
-                </div>
-            </section>
-        </main>
-    </div>
+    <main class="widgets-container">
+      <!-- Weather Widget -->
+      <section class="widget weather-widget">
+        <h2>Current Weather</h2>
+        <div id="weather-display">
+          Loading weather data...
+        </div>
+      </section>
 
-    <script src="js/app.js"></script>
+      <!-- Quotes Widget -->
+      <section class="widget quotes-widget">
+        <h2>Daily Inspiration</h2>
+        <div id="quotes-display"></div>
+        <button id="new-quote-btn" class="btn-primary">New Quote</button>
+      </section>
+
+      <!-- Tasks Widget -->
+      <section class="widget tasks-widget">
+        <h2>My Tasks</h2>
+
+        <!-- Add Task Form -->
+        <form id="task-form" class="task-form">
+          <input 
+            type="text" 
+            id="task-input" 
+            placeholder="Add a new task..." 
+            required 
+          />
+          <button type="submit" class="btn-primary">Add Task</button>
+        </form>
+
+        <!-- Task Statistics -->
+        <div id="task-stats" class="task-stats"></div>
+
+        <!-- Tasks List -->
+        <div id="tasks-list" class="tasks-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- CHANGE THIS TO MATCH YOUR ACTUAL FILE NAME -->
+  <script src="js/app.js"></script>
 </body>
 </html>
-
-<div class="widget quotes-widget">
-  <h2>Daily Inspiration</h2>
-  <div id="quotes-display">
-    <!-- Quote will appear here -->
-  </div>
-  <button id="new-quote-btn" class="btn-primary">New Quote</button>
-</div>
-
-<div class="widget tasks-widget">
-  <h2>My Tasks</h2>
-
-  <!-- Add Task Form -->
-  <form id="task-form" class="task-form">
-    <input
-      type="text"
-      id="task-input"
-      placeholder="Add a new task..."
-      required
-    />
-    <button type="submit" class="btn-primary">Add Task</button>
-  </form>
-
-  <!-- Task Statistics -->
-  <div id="task-stats" class="task-stats">
-    <!-- Stats will appear here -->
-  </div>
-
-  <!-- Tasks List -->
-  <div id="tasks-list" class="tasks-list">
-    <!-- Tasks will appear here -->
-  </div>
-</div>
