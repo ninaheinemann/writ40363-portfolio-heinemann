@@ -50,6 +50,57 @@
 }
 
 /* ===================================
+   DARK THEME – VARIABLE OVERRIDES
+   =================================== */
+
+body.theme-dark {
+  /* Backgrounds */
+  --color-bg-light: #1a202c;
+  --color-bg-white: #2d3748;
+  --color-bg-page: #1a202c;
+
+  /* Text Colors */
+  --color-text-dark: #f7fafc;
+  --color-text-muted: #cbd5e0;
+  --color-text-medium: #e2e8f0;
+  --color-text-subtle: #a0aec0;
+
+  /* UI Elements */
+  --color-border: #4a5568;
+  --color-border-input: #4a5568;
+
+  /* Accent Colors */
+  --color-accent: #63b3ed;
+  --color-accent-hover: #4299e1;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
+
+  /* Error Colors */
+  --color-error-bg: #742a2a;
+
+  /* Header colors (if needed) */
+  --color-primary: #4a5568;
+  --color-secondary: #2d3748;
+}
+
+/* Optional dark-mode refinements */
+body.theme-dark .task-item {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+body.theme-dark .task-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark input {
+  background: var(--color-bg-light);
+  color: var(--color-text-dark);
+}
+
+/* ===================================
    GLOBAL BASE
    =================================== */
 
@@ -87,6 +138,44 @@ header {
 
 header h1 {
   color: var(--color-text-dark);
+}
+
+/* Header layout + theme toggle */
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  margin-top: 4px;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+}
+
+.theme-icon {
+  font-size: 24px;
 }
 
 .widgets-container {
@@ -296,5 +385,10 @@ header h1 {
   .dashboard {
     grid-template-columns: 1fr;
     padding: var(--space-md);
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
   }
 }

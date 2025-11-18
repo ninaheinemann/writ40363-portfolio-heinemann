@@ -2,6 +2,38 @@
 // PROJECT 3: PERSONAL DATA DASHBOARD
 // ==========================================
 
+// ------------ THEME MANAGEMENT -------------
+
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('dashboardTheme');
+
+  if (savedTheme === 'dark') {
+    document.body.classList.add('theme-dark');
+    updateThemeIcon('dark');
+  } else {
+    updateThemeIcon('light');
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('theme-dark');
+  localStorage.setItem('dashboardTheme', isDark ? 'dark' : 'light');
+  updateThemeIcon(isDark ? 'dark' : 'light');
+}
+
+function updateThemeIcon(theme) {
+  const themeIcon = document.querySelector('.theme-icon');
+  if (!themeIcon) return;
+  themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+function setupThemeToggle() {
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
+}
+
 // ------------ WEATHER WIDGET -------------
 
 function loadWeather() {
@@ -65,7 +97,7 @@ function displayRandomQuote() {
   let randomIndex;
   do {
     randomIndex = Math.floor(Math.random() * allQuotes.length);
-  } while (randomIndex === currentQuoteIndex);
+  } while (randomIndex === currentQuoteIndex && allQuotes.length > 1);
 
   currentQuoteIndex = randomIndex;
   const quote = allQuotes[randomIndex];
@@ -142,6 +174,8 @@ function setupTaskForm() {
   const form = document.getElementById('task-form');
   const input = document.getElementById('task-input');
 
+  if (!form) return;
+
   form.addEventListener('submit', e => {
     e.preventDefault();
     if (input.value.trim()) {
@@ -182,8 +216,13 @@ function updateTaskStats(tasks) {
 
 // ------------ INITIALIZE EVERYTHING -------------
 
-loadWeather();
-loadQuotes();
-setupQuotesButton();
-displayTasks();
-setupTaskForm();
+document.addEventListener('DOMContentLoaded', () => {
+  initializeTheme();
+  setupThemeToggle();
+
+  loadWeather();
+  loadQuotes();
+  setupQuotesButton();
+  displayTasks();
+  setupTaskForm();
+});
