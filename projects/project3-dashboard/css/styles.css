@@ -1,394 +1,448 @@
-/* ===================================
-   CSS CUSTOM PROPERTIES (VARIABLES)
-   =================================== */
+/* =========================================
+   SOFT GIRLY DASHBOARD DESIGN
+   - blush & lilac accents
+   - clean modern typography
+   - light & dark (day/night) palettes
+========================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+/* ---------- LIGHT THEME (DAY) ---------- */
 :root {
-  /* Color Palette */
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
-  --color-accent: #4299e1;
+  --bg-page: #fff5f8;        /* very light blush */
+  --bg-panel: #ffffff;       /* white cards */
+  --bg-subtle: #ffeef5;      /* pale blush area */
 
-  /* Backgrounds */
-  --color-bg-light: #f7fafc;
-  --color-bg-white: #ffffff;
-  --color-bg-page: #f5f5f5;
+  --accent-red: #ff7aa2;         /* warm pink */
+  --accent-red-soft: #ffe1ec;    /* soft pink */
+  --accent-blue: #c3b5ff;        /* lilac */
+  --accent-blue-soft: #efe9ff;   /* soft lilac */
 
-  /* Text Colors */
-  --color-text-dark: #2d3748;
-  --color-text-muted: #718096;
-  --color-text-medium: #4a5568;
-  --color-text-subtle: #a0aec0;
+  --border-soft: #f2dbe6;
 
-  /* UI Elements */
-  --color-border: #e2e8f0;
-  --color-border-input: #cbd5e0;
-  --color-error: #e53e3e;
-  --color-error-bg: #fff5f5;
-  --color-error-border: #fc8181;
+  --text-main: #26172f;      /* deep plum */
+  --text-muted: #8b7a95;
+  --text-soft: #b39fba;
 
-  /* Buttons / States */
-  --color-accent-hover: #3182ce;
-  --color-danger-hover: #f56565;
+  --radius-lg: 26px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
-  --shadow-lg: 0 10px 24px rgba(0,0,0,0.15);
+  --shadow-soft: 0 24px 60px rgba(53, 28, 61, 0.12);
 
-  /* Spacing */
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 32px;
+  --font-heading: "Playfair Display", system-ui, serif;
+  --font-body: "DM Sans", system-ui, -apple-system, blinkmacsystemfont, sans-serif;
+  --font-display: "Playfair Display", system-ui, serif;
 
-  /* Typography */
-  --font-size-sm: 14px;
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 32px;
+  --transition-fast: 160ms ease-out;
 }
 
-/* ===================================
-   DARK THEME – VARIABLE OVERRIDES
-   =================================== */
+/* ---------- DARK THEME (NIGHT) ---------- */
+/* your JS should toggle .dark-theme on <body> or <html> */
+.dark-theme {
+  --bg-page: #07040b;        /* deep night plum */
+  --bg-panel: #171020;
+  --bg-subtle: #23152f;
 
-body.theme-dark {
-  /* Backgrounds */
-  --color-bg-light: #1a202c;
-  --color-bg-white: #2d3748;
-  --color-bg-page: #1a202c;
+  --accent-red: #ff9bb5;         /* bright pink accent */
+  --accent-red-soft: #3a1a2c;
+  --accent-blue: #d0c3ff;        /* soft lilac accent */
+  --accent-blue-soft: #2b2140;
 
-  /* Text Colors */
-  --color-text-dark: #f7fafc;
-  --color-text-muted: #cbd5e0;
-  --color-text-medium: #e2e8f0;
-  --color-text-subtle: #a0aec0;
+  --border-soft: #372a45;
 
-  /* UI Elements */
-  --color-border: #4a5568;
-  --color-border-input: #4a5568;
+  --text-main: #fdf5ff;
+  --text-muted: #c6b6d5;
+  --text-soft: #9486a5;
 
-  /* Accent Colors */
-  --color-accent: #63b3ed;
-  --color-accent-hover: #4299e1;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.5);
-
-  /* Error Colors */
-  --color-error-bg: #742a2a;
-
-  /* Header colors (if needed) */
-  --color-primary: #4a5568;
-  --color-secondary: #2d3748;
+  --shadow-soft: 0 26px 60px rgba(0, 0, 0, 0.85);
 }
 
-/* Optional dark-mode refinements */
-body.theme-dark .task-item {
-  background: rgba(255, 255, 255, 0.03);
-}
+/* =========================================
+   GLOBAL
+========================================= */
 
-body.theme-dark .task-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-body.theme-dark input {
-  background: var(--color-bg-light);
-  color: var(--color-text-dark);
-}
-
-/* ===================================
-   GLOBAL BASE
-   =================================== */
-
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--color-bg-page);
-  color: var(--color-text-dark);
-  padding: var(--space-md);
+  margin: 0;
+  padding: 0;
 }
 
-/* ===================================
-   DASHBOARD
-   =================================== */
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: radial-gradient(circle at top left, #ffffff 0, var(--bg-page) 55%);
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
 .dashboard {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-md);
-  padding: var(--space-lg) var(--space-md);
-  max-width: 1200px;
+  max-width: 1080px;
   margin: 0 auto;
+  padding: 32px 18px 72px;
 }
 
+/* =========================================
+   HEADER
+========================================= */
+
 header {
-  grid-column: 1/-1;
-  text-align: center;
-  margin-bottom: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 26px;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 header h1 {
-  color: var(--color-text-dark);
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-/* Header layout + theme toggle */
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
+header p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
-.dashboard-subtitle {
-  color: var(--color-text-muted);
-  font-size: var(--font-size-base);
-  margin-top: 4px;
-}
-
-.theme-toggle {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* day/night toggle button */
+header button {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-soft);
+  padding: 8px 16px;
+  background: var(--bg-panel);
+  font-size: 0.82rem;
+  color: var(--text-muted);
   cursor: pointer;
-  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: rotate(20deg);
-}
-
-.theme-icon {
-  font-size: 24px;
-}
+/* =========================================
+   GRID LAYOUT
+========================================= */
 
 .widgets-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-md);
+  gap: 22px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-areas:
+    "weather quote"
+    "weather tasks";
 }
 
-/* ===================================
-   BASE WIDGET
-   =================================== */
+.weather-widget {
+  grid-area: weather;
+}
+
+.quotes-widget {
+  grid-area: quote;
+}
+
+.tasks-widget {
+  grid-area: tasks;
+}
+
+@media (max-width: 820px) {
+  .widgets-container {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "weather"
+      "quote"
+      "tasks";
+  }
+}
+
+/* =========================================
+   CARD / PANEL BASE STYLES
+========================================= */
 
 .widget {
-  background: var(--color-bg-white);
-  padding: var(--space-md);
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  min-height: 200px;
+  background: var(--bg-panel);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 20px 22px 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft gradient accent on left edge */
+.widget::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-red),
+    var(--accent-blue)
+  );
+  opacity: 0.95;
+}
+
+.widget-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .widget h2 {
-  margin-bottom: var(--space-sm);
-  font-size: var(--font-size-xl);
-  color: var(--color-text-dark);
-  border-bottom: 2px solid var(--color-border);
-  padding-bottom: 8px;
+  margin: 0;
+  padding-left: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
-/* ===================================
-   WEATHER WIDGET
-   =================================== */
+.widget .widget-subtitle {
+  margin: 6px 0 12px;
+  padding-left: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
 
-.weather-current {
-  text-align: center;
-  margin-bottom: var(--space-md);
+/* =========================================
+   WEATHER WIDGET
+========================================= */
+
+.weather-widget .weather-main {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 540px) {
+  .weather-widget .weather-main {
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+  }
 }
 
 .weather-icon {
-  font-size: 64px;
-  margin-bottom: 10px;
+  font-size: 3.4rem;
 }
 
 .weather-temp {
-  font-size: 48px;
-  font-weight: bold;
-  color: var(--color-text-dark);
-  margin: 10px 0;
-}
-
-.weather-location {
-  font-size: 18px;
-  color: var(--color-text-muted);
-  margin: 5px 0;
-}
-
-.weather-condition {
-  font-size: 16px;
-  color: var(--color-text-medium);
-  font-weight: 500;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 3.1rem;
 }
 
 .weather-details {
+  margin-top: 6px;
+  font-size: 0.92rem;
+}
+
+.weather-location {
+  font-weight: 600;
+}
+
+.weather-condition {
+  color: var(--text-soft);
+}
+
+.weather-extra {
+  margin-top: 16px;
   display: flex;
-  justify-content: space-around;
-  padding-top: 15px;
-  border-top: 1px solid var(--color-border);
-  margin-top: 15px;
+  gap: 26px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  font-size: 0.83rem;
+  color: var(--text-soft);
 }
 
-.weather-detail span {
-  font-size: 14px;
-  color: var(--color-text-muted);
+.weather-extra span strong {
+  color: var(--accent-red);
 }
 
-.weather-detail strong {
-  font-size: 18px;
-  color: var(--color-text-dark);
-}
-
-/* ===================================
-   ERROR MESSAGE
-   =================================== */
-
-.error-message {
-  text-align: center;
-  padding: var(--space-md);
-  color: var(--color-error);
-}
-
-.error-hint {
-  color: var(--color-text-subtle);
-  font-size: var(--font-size-sm);
-}
-
-/* ===================================
+/* =========================================
    QUOTES WIDGET
-   =================================== */
+========================================= */
 
-.quote-card {
-  text-align: center;
-  padding: 30px 20px;
-  min-height: 150px;
+.quotes-widget {
+  display: flex;
+  flex-direction: column;
 }
 
 .quote-text {
-  font-size: 20px;
-  line-height: 1.6;
-  color: var(--color-text-dark);
-  font-style: italic;
-  margin-bottom: 15px;
+  margin: 16px 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
 .quote-author {
-  font-size: 16px;
-  color: var(--color-text-muted);
-  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
 }
 
-.btn-primary {
-  background: var(--color-accent);
-  color: var(--color-bg-white);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  width: 100%;
-  margin-top: 15px;
+.quote-actions {
+  margin-top: 18px;
 }
 
-.btn-primary:hover {
-  background: var(--color-accent-hover);
-}
-
-/* ===================================
+/* =========================================
    TASKS WIDGET
-   =================================== */
+========================================= */
 
-.task-form {
+.tasks-widget .task-input-row {
+  margin-top: 14px;
   display: flex;
   gap: 10px;
-  margin-bottom: var(--space-md);
 }
 
-.task-form input {
+.tasks-widget input[type="text"] {
   flex: 1;
-  padding: 10px;
-  border: 1px solid var(--color-border-input);
-  border-radius: 5px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-subtle);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  outline: none;
 }
 
-.task-stats {
-  background: var(--color-bg-light);
-  padding: 15px;
-  border-radius: 5px;
-  color: var(--color-text-medium);
-  margin-bottom: 15px;
+.tasks-widget input[type="text"]::placeholder {
+  color: var(--text-soft);
 }
 
-.tasks-list {
-  max-height: 300px;
-  overflow-y: auto;
+.tasks-widget input[type="text"]:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 1px rgba(255, 122, 162, 0.45);
+}
+
+/* stats strip */
+.tasks-widget .task-stats {
+  margin-top: 12px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    90deg,
+    var(--accent-red-soft),
+    var(--accent-blue-soft)
+  );
+  font-size: 0.8rem;
+  color: var(--text-main);
+}
+
+.tasks-widget .task-stats strong {
+  color: var(--accent-red);
+}
+
+/* list */
+.tasks-widget .task-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .task-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
-  margin-bottom: 8px;
+  gap: 12px;
+  padding: 8px 11px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-panel);
 }
 
-.task-item:hover {
-  background: var(--color-bg-light);
+.dark-theme .task-item {
+  background: #20142c;
 }
 
-.task-item .task-text {
-  flex: 1;
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.task-item.completed .task-text {
+.task-label {
+  font-size: 0.9rem;
+}
+
+.task-label.completed {
   text-decoration: line-through;
-  color: var(--color-text-subtle);
+  color: var(--text-soft);
 }
 
-.btn-delete {
-  background: var(--color-error-border);
-  color: var(--color-bg-white);
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+/* delete button inside task row */
+.delete-btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 122, 162, 0.4);
+  background: var(--accent-red-soft);
+  padding: 4px 11px;
+  font-size: 0.78rem;
+  color: var(--accent-red);
   cursor: pointer;
 }
 
-.btn-delete:hover {
-  background: var(--color-danger-hover);
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+  font-family: var(--font-body);
 }
 
-/* ===================================
-   RESPONSIVE
-   =================================== */
+.btn-primary,
+#new-quote-btn {
+  border-radius: var(--radius-pill);
+  border: none;
+  padding: 9px 18px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(
+    120deg,
+    var(--accent-red),
+    var(--accent-blue)
+  );
+  color: #ffffff;
+  box-shadow: 0 12px 26px rgba(219, 98, 151, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
 
-@media (max-width: 768px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-    padding: var(--space-md);
-  }
+.btn-primary:hover,
+#new-quote-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(219, 98, 151, 0.45);
+  filter: brightness(1.03);
+}
 
-  .header-content {
-    flex-direction: column;
-    gap: 20px;
-  }
+/* loading/error text */
+.loading {
+  margin-top: 8px;
+  font-size: 0.86rem;
+  color: var(--text-soft);
+}
+
+.error-message {
+  margin-top: 8px;
+  font-size: 0.86rem;
+  color: var(--accent-red);
 }

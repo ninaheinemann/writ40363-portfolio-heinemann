@@ -8,7 +8,8 @@ function initializeTheme() {
   const savedTheme = localStorage.getItem('dashboardTheme');
 
   if (savedTheme === 'dark') {
-    document.body.classList.add('theme-dark');
+    // changed from 'theme-dark' to 'dark-theme'
+    document.body.classList.add('dark-theme');
     updateThemeIcon('dark');
   } else {
     updateThemeIcon('light');
@@ -16,7 +17,8 @@ function initializeTheme() {
 }
 
 function toggleTheme() {
-  const isDark = document.body.classList.toggle('theme-dark');
+  // changed from 'theme-dark' to 'dark-theme'
+  const isDark = document.body.classList.toggle('dark-theme');
   localStorage.setItem('dashboardTheme', isDark ? 'dark' : 'light');
   updateThemeIcon(isDark ? 'dark' : 'light');
 }
