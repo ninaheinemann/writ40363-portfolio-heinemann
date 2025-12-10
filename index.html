@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 
 <body id="top">
@@ -20,7 +20,7 @@
 
   <header>
     <div class="site-shell top-bar">
-      <!-- 1. PERSONAL LOGO – NOT “NH” -->
+      <!-- PERSONAL LOGO PILL -->
       <div class="logo-pill">
         <span class="logo-mark">N</span>
         <span class="logo-text">Nina Heinemann</span>
@@ -72,19 +72,19 @@
           </p>
         </div>
 
-        <!-- ABOUT PHOTO STRIP (Guatemala, Fort Worth, TCU) -->
+        <!-- ABOUT PHOTO STRIP (TCU, Fort Worth, Guatemala) -->
         <div class="about-gallery">
-          <figure>
-            <img src="images/guatemala.jpg" alt="Landscape photo from Guatemala">
-            <figcaption>Guatemala — home</figcaption>
-          </figure>
-          <figure>
-            <img src="images/fort-worth.jpg" alt="View of Fort Worth">
-            <figcaption>Fort Worth — college life</figcaption>
-          </figure>
           <figure>
             <img src="images/tcu-commons.jpg" alt="TCU campus">
             <figcaption>TCU campus</figcaption>
+          </figure>
+          <figure>
+            <img src="images/fort-worth.jpg" alt="View of the Fort Worth Stockyards">
+            <figcaption>Fort Worth — college life</figcaption>
+          </figure>
+          <figure>
+            <img src="images/guatemala.jpg" alt="Guatemala flag">
+            <figcaption>Guatemala — home</figcaption>
           </figure>
         </div>
       </div>
@@ -97,8 +97,10 @@
 
         <div class="card-grid">
           <article class="project">
-            <div class="project-meta">1.</div>
-            <h3 class="project-title">DEC Network Lunch &amp; Learn Series</h3>
+            <div class="project-header">
+              <span class="project-number">1</span>
+              <h3 class="project-title">DEC Network Lunch &amp; Learn Series</h3>
+            </div>
             <p class="project-desc">
               Coordinated “Lunch &amp; Learn” events, supported logistics, and designed marketing materials to promote programs for local entrepreneurs.
             </p>
@@ -106,8 +108,10 @@
           </article>
 
           <article class="project">
-            <div class="project-meta">2.</div>
-            <h3 class="project-title">Casa Fika Website</h3>
+            <div class="project-header">
+              <span class="project-number">2</span>
+              <h3 class="project-title">Casa Fika Website</h3>
+            </div>
             <p class="project-desc">
               Built a guestbook-style interactive website using TouchStay for a hospitality project, focusing on warm visuals and simple navigation.
             </p>
@@ -115,8 +119,10 @@
           </article>
 
           <article class="project">
-            <div class="project-meta">3.</div>
-            <h3 class="project-title">WRIT 40363 Portfolio Site</h3>
+            <div class="project-header">
+              <span class="project-number">3</span>
+              <h3 class="project-title">WRIT 40363 Portfolio Site</h3>
+            </div>
             <p class="project-desc">
               Designed and coded this portfolio to organize my class projects and experience in a way that feels clean, soft, and easy to skim.
             </p>
@@ -198,13 +204,12 @@
       </div>
     </section>
 
-
     <!-- PROJECTS (class projects with LINKS) -->
     <section id="projects" class="section">
       <div class="site-shell">
         <h2 class="section-label">Course Projects for WRIT 40363</h2>
         <p class="section-intro">
-          These four projects show my growth from simple layouts to fully interactive web apps using JavaScript, Json, CSS and Python.
+          These four projects show my growth from simple layouts to fully interactive web apps using JavaScript, JSON, CSS, and data.
         </p>
 
         <ul class="project-list">
@@ -264,7 +269,7 @@
           <li>LinkedIn:
             <a href="https://www.linkedin.com/in/nina-heinemanndlf/" target="_blank" rel="noopener">Nina Heinemann</a>
           </li>
-          <li>Location: Guatemala, Guatemala City</li>
+          <li>Location: <span class="accent-text">Guatemala, Guatemala City</span></li>
         </ul>
       </div>
     </section>
@@ -273,9 +278,10 @@
   <footer>
     <div class="site-shell footer-inner">
       <p>&copy; 2025 Nina Heinemann De La Fuente</p>
-      <a href="#top" class="footer-top-link">Back to top</a>
     </div>
   </footer>
+
+  <!-- Floating back-to-top arrow -->
+  <a href="#top" class="back-to-top" aria-label="Back to top">↑</a>
 </body>
 </html>
-
