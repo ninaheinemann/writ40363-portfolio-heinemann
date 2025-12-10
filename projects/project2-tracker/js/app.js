@@ -1,76 +1,207 @@
-// ==========================================
-// PROJECT 2: LOCAL FAVORITES TRACKER
-// LAB15: localStorage Persistence - COMPLETE!
-// ==========================================
+// PROJECT 2 – LOCAL FAVORITES TRACKER
+// Handles adding, rendering, searching, filtering, and deleting favorites.
 
-// Function to save favorites to localStorage
-function saveFavorites() {
+console.log("app.js loaded"); // quick sanity check
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM ready");
+
+  var form = document.getElementById("add-favorite-form");
+  var nameInput = document.getElementById("name");
+  var categoryInput = document.getElementById("category");
+  var ratingInput = document.getElementById("rating");
+  var notesInput = document.getElementById("notes");
+
+  var favoritesList = document.getElementById("favorites-list");
+  var searchInput = document.getElementById("search-input");
+  var categoryFilter = document.getElementById("category-filter");
+
+  if (!form || !favoritesList) {
+    console.warn("Favorites tracker: required elements not found on this page.");
+    return;
+  }
+
+  // -------- STATE & STORAGE --------
+  var favorites = loadFavorites();
+
+  function loadFavorites() {
     try {
-        localStorage.setItem('localFavorites', JSON.stringify(favorites));
-        console.log('Favorites saved to localStorage');
-        console.log('Saved', favorites.length, 'favorites');
-    } catch (error) {
-        console.error('Error saving to localStorage:', error);
-        alert('Unable to save favorites. Your browser may have storage disabled.');
+      var raw = localStorage.getItem("local-favorites-data");
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      console.error("Error loading favorites from localStorage", e);
+      return [];
     }
-}
+  }
 
-// Function to load favorites from localStorage
-function loadFavorites() {
+  function saveFavorites() {
     try {
-        const savedData = localStorage.getItem('localFavorites');
-
-        if (savedData) {
-            favorites = JSON.parse(savedData);
-            console.log('Favorites loaded from localStorage');
-            console.log('Loaded', favorites.length, 'favorites');
-        } else {
-            console.log('No saved favorites found');
-            favorites = [];
-        }
-    } catch (error) {
-        console.error('Error loading from localStorage:', error);
-        console.log('Starting with empty favorites array');
-        favorites = [];
+      localStorage.setItem("local-favorites-data", JSON.stringify(favorites));
+    } catch (e) {
+      console.error("Error saving favorites to localStorage", e);
     }
-}
+  }
 
-// [Your other functions from LAB13-14: displayFavorites, searchFavorites, deleteFavorite, addFavorite]
+  // -------- RENDERING --------
+  function renderFavorites(listToRender) {
+    favoritesList.innerHTML = "";
 
-// Function to clear all favorites
-function clearAllFavorites() {
-    const confirmClear = confirm('Are you sure you want to delete ALL favorites? This cannot be undone!');
-
-    if (confirmClear) {
-        favorites = [];
-        console.log('All favorites cleared');
-
-        localStorage.removeItem('localFavorites');
-        console.log('localStorage cleared');
-
-        displayFavorites();
-        alert('All favorites have been deleted.');
-    } else {
-        console.log('Clear all cancelled by user');
+    if (!listToRender || listToRender.length === 0) {
+      var empty = document.createElement("p");
+      empty.className = "empty-message";
+      empty.textContent = "No favorites yet — add some above!";
+      favoritesList.appendChild(empty);
+      return;
     }
-}
 
-// Connect event listeners
-form.addEventListener('submit', addFavorite);
-searchInput.addEventListener('input', searchFavorites);
-categoryFilter.addEventListener('change', searchFavorites);
+    listToRender.forEach(function (fav) {
+      var card = document.createElement("article");
+      card.className = "favorite-card";
+      card.setAttribute("data-id", fav.id);
 
-const clearAllBtn = document.getElementById('clear-all-btn');
-if (clearAllBtn) {
-    clearAllBtn.addEventListener('click', clearAllFavorites);
-}
+      var ratingLabel = fav.ratingText || "";
+      var dateLabel = fav.dateAdded || "";
 
-console.log('Event listeners attached - app is ready!');
+      var headerHtml =
+        '<div class="favorite-header">' +
+        "<h3>" + escapeHTML(fav.name) + "</h3>" +
+        '<span class="favorite-category">' +
+        formatCategory(fav.category) +
+        "</span>" +
+        "</div>";
 
-// Load saved favorites from localStorage on startup
-loadFavorites();
+      var ratingHtml = ratingLabel
+        ? '<div class="favorite-rating">' + ratingLabel + "</div>"
+        : "";
 
-// Display the loaded favorites (or empty message)
-displayFavorites();
+      var notesHtml = fav.notes
+        ? '<p class="favorite-notes">' + escapeHTML(fav.notes) + "</p>"
+        : "";
 
-console.log('✅ Project 2: Local Favorites Tracker is ready to use!');
+      var dateHtml = dateLabel
+        ? '<p class="favorite-date">Added on ' + dateLabel + "</p>"
+        : "";
+
+      var actionsHtml =
+        '<div class="favorite-actions">' +
+        '<button class="btn btn-danger delete-btn" type="button" data-id="' + fav.id + '">' +
+        "Delete" +
+        "</button>" +
+        "</div>";
+
+      card.innerHTML = headerHtml + ratingHtml + notesHtml + dateHtml + actionsHtml;
+
+      favoritesList.appendChild(card);
+    });
+  }
+
+  function formatCategory(cat) {
+    switch (cat) {
+      case "coffee":
+        return "Coffee Shop";
+      case "restaurants":
+        return "Restaurant";
+      case "parks":
+        return "Park";
+      case "entertainment":
+        return "Entertainment";
+      case "study-spots":
+        return "Study Spot";
+      case "fitness":
+        return "Fitness";
+      case "other":
+        return "Other";
+      default:
+        return cat || "Uncategorized";
+    }
+  }
+
+  function escapeHTML(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  // -------- FILTERS (SEARCH + CATEGORY) --------
+  function applyFilters() {
+    var searchTerm = (searchInput ? searchInput.value : "").toLowerCase().trim();
+    var categoryValue = categoryFilter ? categoryFilter.value : "all";
+
+    var filtered = favorites.filter(function (fav) {
+      var matchesCategory =
+        categoryValue === "all" || fav.category === categoryValue;
+
+      var text =
+        (fav.name || "") +
+        " " +
+        (fav.notes || "") +
+        " " +
+        formatCategory(fav.category);
+
+      var matchesSearch = text.toLowerCase().includes(searchTerm);
+
+      return matchesCategory && matchesSearch;
+    });
+
+    renderFavorites(filtered);
+  }
+
+  // -------- FORM SUBMIT: ADD FAVORITE --------
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log("Form submitted");
+
+    var nameValue = nameInput.value.trim();
+    var categoryValue = categoryInput.value;
+    var ratingValue = ratingInput.value;
+    var ratingText = ratingInput.options[ratingInput.selectedIndex].text;
+    var notesValue = notesInput.value.trim();
+
+    if (!nameValue || !categoryValue) {
+      alert("Please fill out the required fields: Place Name and Category.");
+      return;
+    }
+
+    var newFavorite = {
+      id: Date.now().toString(),
+      name: nameValue,
+      category: categoryValue,
+      rating: ratingValue,
+      ratingText: ratingText,
+      notes: notesValue,
+      dateAdded: new Date().toLocaleDateString()
+    };
+
+    favorites.push(newFavorite);
+    saveFavorites();
+    applyFilters(); // re-render with current filters
+
+    form.reset();
+  });
+
+  // -------- DELETE FAVORITE (EVENT DELEGATION) --------
+  favoritesList.addEventListener("click", function (event) {
+    var target = event.target;
+    if (target.classList.contains("delete-btn")) {
+      var id = target.getAttribute("data-id");
+      favorites = favorites.filter(function (fav) {
+        return fav.id !== id;
+      });
+      saveFavorites();
+      applyFilters();
+    }
+  });
+
+  // -------- SEARCH & FILTER LISTENERS --------
+  if (searchInput) {
+    searchInput.addEventListener("input", applyFilters);
+  }
+
+  if (categoryFilter) {
+    categoryFilter.addEventListener("change", applyFilters);
+  }
+
+  // Initial render
+  applyFilters();
+});
