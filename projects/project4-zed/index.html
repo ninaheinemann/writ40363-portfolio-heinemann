@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- I want this to look good on phones, tablets and laptops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Daily Fuel – Calorie & Wellness Journal</title>
+
+  <!-- My main CSS file -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Google font for the soft, modern look I like -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- I use Chart.js for a simple weekly calories graph -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Top bar with app title + theme toggle -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark">✿</span>
+        <span class="brand-text">Daily Fuel</span>
+      </div>
+
+      <!-- I can flip between light and dark pink modes -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main layout: left = add entry, right = goals + summary + journal + history -->
+  <main class="app-main">
+    <!-- LEFT SIDE: calorie entry form -->
+    <section class="card entry-card">
+      <h1 class="card-title">Log a Meal</h1>
+      <p class="card-subtitle">
+        Here is where I track what I eat and how it fits my goals.
+      </p>
+
+      <!-- This form creates a new calorie entry -->
+      <form id="entry-form" class="entry-form">
+        <!-- Date picker, default is today -->
+        <div class="field">
+          <label for="entry-date">Date</label>
+          <input
+            type="date"
+            id="entry-date"
+            name="entry-date"
+            required
+          />
+          <p class="field-hint">
+            I can change this if I’m logging a past day.
+          </p>
+        </div>
+
+        <!-- Meal type: breakfast, lunch, etc. -->
+        <div class="field field-half">
+          <label for="meal-type">Meal</label>
+          <div class="select-wrapper">
+            <select id="meal-type" name="meal-type" required>
+              <option value="" disabled selected>Select meal</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Short description of what I ate -->
+        <div class="field">
+          <label for="meal-notes">What did I eat?</label>
+          <input
+            type="text"
+            id="meal-notes"
+            name="meal-notes"
+            maxlength="80"
+            placeholder="Avocado toast, iced coffee, yogurt bowl..."
+            required
+          />
+        </div>
+
+        <!-- Calories input -->
+        <div class="field field-half">
+          <label for="calories">Calories</label>
+          <input
+            type="number"
+            id="calories"
+            name="calories"
+            min="0"
+            step="1"
+            placeholder="300"
+            required
+          />
+        </div>
+
+        <!-- Little note about how I felt about this meal (optional) -->
+        <div class="field">
+          <label for="meal-feeling">How did this make me feel? (optional)</label>
+          <textarea
+            id="meal-feeling"
+            name="meal-feeling"
+            rows="3"
+            placeholder="Satisfied, still hungry, low energy, proud of this choice..."
+          ></textarea>
+        </div>
+
+        <!-- Form buttons -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            Add to log
+          </button>
+          <button type="button" id="clear-today-btn" class="btn btn-ghost">
+            Clear today’s entries
+          </button>
+        </div>
+
+        <!-- Here I show validation errors -->
+        <p id="entry-error" class="error-msg" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- RIGHT SIDE: goals, summary, journal and history -->
+    <section class="right-column">
+      <!-- Goals card -->
+      <section class="card goals-card">
+        <h2 class="card-title">My Daily Goals</h2>
+        <p class="card-subtitle">
+          I use this to set realistic goals instead of being extreme.
+        </p>
+
+        <!-- This small form lets me store my goals in localStorage -->
+        <form id="goals-form" class="goals-form">
+          <div class="field">
+            <label for="daily-calorie-goal">Daily calorie goal</label>
+            <input
+              type="number"
+              id="daily-calorie-goal"
+              name="daily-calorie-goal"
+              min="0"
+              step="50"
+              placeholder="Example: 1800"
+            />
+          </div>
+
+          <div class="goals-grid">
+            <div class="field">
+              <label for="goal-1">Goal 1</label>
+              <input
+                type="text"
+                id="goal-1"
+                name="goal-1"
+                placeholder="Drink more water"
+              />
+            </div>
+            <div class="field">
+              <label for="goal-2">Goal 2</label>
+              <input
+                type="text"
+                id="goal-2"
+                name="goal-2"
+                placeholder="Move my body"
+              />
+            </div>
+            <div class="field">
+              <label for="goal-3">Goal 3</label>
+              <input
+                type="text"
+                id="goal-3"
+                name="goal-3"
+                placeholder="Be kind to myself"
+              />
+            </div>
+          </div>
+
+          <div class="form-actions goals-actions">
+            <button type="submit" class="btn btn-secondary">
+              Save goals
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Summary + progress for whatever date I'm viewing -->
+      <section class="card summary-card">
+        <div class="summary-header">
+          <h2 class="card-title">Day Summary</h2>
+          <!-- This reflects the date I'm summarizing (same as entry date) -->
+          <span id="summary-date-label" class="summary-date-label"></span>
+        </div>
+
+        <!-- High level stats for that day -->
+        <div class="summary-grid">
+          <div class="stat">
+            <span class="stat-label">Total calories</span>
+            <span id="stat-total-calories" class="stat-value">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Goal</span>
+            <span id="stat-goal" class="stat-value">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Remaining / Over</span>
+            <span id="stat-remaining" class="stat-value">—</span>
+          </div>
+        </div>
+
+        <!-- Visual progress bar against goal -->
+        <div class="progress-wrapper">
+          <div class="progress-labels">
+            <span>0</span>
+            <span id="progress-goal-label">Goal</span>
+          </div>
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Journal card: my written reflection for the day -->
+      <section class="card journal-card">
+        <h2 class="card-title">Reflection Journal</h2>
+        <p class="card-subtitle">
+          This is where I talk to myself about how I feel around food and my day.
+        </p>
+
+        <!-- I save a different note for each date -->
+        <textarea
+          id="journal-text"
+          class="journal-textarea"
+          rows="5"
+          placeholder="How did eating feel today? Any wins, struggles, or patterns I notice?"
+        ></textarea>
+
+        <div class="form-actions journal-actions">
+          <button id="save-journal-btn" class="btn btn-secondary">
+            Save reflection for this day
+          </button>
+        </div>
+
+        <p id="journal-status" class="journal-status" aria-live="polite"></p>
+      </section>
+
+      <!-- Recent entries + weekly chart -->
+      <section class="card history-card">
+        <div class="history-header">
+          <h2 class="card-title">Recent Entries & Weekly Trend</h2>
+        </div>
+
+        <!-- Small chart that shows last 7 days of calories -->
+        <div class="chart-container">
+          <canvas id="weekly-chart" aria-label="Weekly calorie chart" role="img"></canvas>
+        </div>
+
+        <!-- List of latest entries -->
+        <div class="entries-list-wrapper">
+          <h3 class="entries-title">Latest entries</h3>
+          <div id="entries-list" class="entries-list">
+            <!-- JS will render my recent entries here -->
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Little footer vibes -->
+  <footer class="app-footer">
+    <p>Built for Project Zed · Calorie tracking with kindness, not perfection 💗</p>
+  </footer>
+
+  <!-- My main JS file -->
+  <script src="js/app.js"></script>
+</body>
+</html>

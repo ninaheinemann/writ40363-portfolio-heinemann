@@ -1,0 +1,571 @@
+/* =========================
+   MY DESIGN SYSTEM (PINK AESTHETIC)
+   ========================= */
+
+/* These variables control the main look of my app */
+:root {
+  --bg: #fff7fb;
+  --bg-elevated: #ffffff;
+  --bg-muted: #ffe9f4;
+  --bg-soft: #ffeef8;
+  --text: #241723;
+  --text-muted: #8b6b83;
+  --accent: #ff7aa2;
+  --accent-deep: #e15686;
+  --accent-soft: rgba(255, 122, 162, 0.18);
+  --border-subtle: #f5cbdc;
+  --radius-lg: 1.5rem;
+  --radius-md: 0.9rem;
+  --shadow-soft: 0 16px 50px rgba(208, 118, 150, 0.18);
+  --transition-fast: 180ms ease-out;
+}
+
+/* This is the darker pink / plum mode */
+body.theme-dark {
+  --bg: #1a0f18;
+  --bg-elevated: #221322;
+  --bg-muted: #32172c;
+  --bg-soft: #2a1324;
+  --text: #fdf5fa;
+  --text-muted: #b48fb0;
+  --accent: #ff9cc0;
+  --accent-deep: #ff7aa2;
+  --accent-soft: rgba(255, 156, 192, 0.2);
+  --border-subtle: #4a2942;
+}
+
+/* =========================
+   GLOBAL RESET / BASE
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* This controls the base background and typography */
+body {
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #ffeef6 0, var(--bg) 45%, var(--bg) 100%);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark mode background still keeps the pink feeling but deeper */
+body.theme-dark {
+  background: radial-gradient(circle at top, #32172c 0, #1a0f18 45%, #1a0f18 100%);
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.app-header {
+  padding: 1.2rem 1.5rem;
+}
+
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* My “Daily Fuel” brand area */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.25rem;
+}
+
+.brand-text {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+}
+
+/* Theme toggle pill */
+.theme-toggle {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(208, 118, 150, 0.25);
+}
+
+/* =========================
+   MAIN LAYOUT
+   ========================= */
+
+/* I use a two-column grid for desktop, stack it on mobile */
+.app-main {
+  flex: 1;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 1.8rem;
+}
+
+@media (max-width: 860px) {
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.app-footer {
+  padding: 0.75rem 1.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   CARD STYLE
+   ========================= */
+
+/* This is my general card style for all sections */
+.card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.6rem 1.75rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft overlay inside cards for a pink glow */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 122, 162, 0.12) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(183, 113, 164, 0.08) 0, transparent 55%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Actual content sits above the glow */
+.card > * {
+  position: relative;
+}
+
+body.theme-dark .card {
+  border-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Titles inside cards */
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem;
+}
+
+/* Soft subtitle under titles */
+.card-subtitle {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   ENTRY FORM (LEFT)
+   ========================= */
+
+.entry-card {
+  align-self: flex-start;
+}
+
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* A single field group */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field-half {
+  max-width: 240px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.field input,
+.field textarea,
+.field select {
+  border-radius: 0.9rem;
+  border: 1px solid var(--border-subtle);
+  padding: 0.55rem 0.8rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: var(--bg-elevated);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Focus styles for better accessibility and feedback */
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+  background: #fff7fc;
+  transform: translateY(-0.5px);
+}
+
+body.theme-dark .field input:focus,
+body.theme-dark .field textarea:focus,
+body.theme-dark .field select:focus {
+  background: #261727;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Custom select styling */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.field select {
+  appearance: none;
+  padding-right: 2rem;
+}
+
+/* Form buttons row */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.btn {
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid transparent;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: background var(--transition-fast), color var(--transition-fast),
+    box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* Primary button: for main actions like Add to log */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(208, 118, 150, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(208, 118, 150, 0.45);
+}
+
+/* Secondary button: soft solid */
+.btn-secondary {
+  background: var(--bg-soft);
+  color: var(--accent-deep);
+  border-color: var(--border-subtle);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-soft);
+}
+
+/* Ghost button: outline / subtle */
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+/* =========================
+   ERROR TEXT
+   ========================= */
+
+.error-msg {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: #b52a52;
+}
+
+/* =========================
+   RIGHT COLUMN LAYOUT
+   ========================= */
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Goals section layout */
+.goals-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+@media (max-width: 880px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.goals-actions {
+  justify-content: flex-start;
+}
+
+/* =========================
+   SUMMARY CARD
+   ========================= */
+
+.summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-date-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* Little grid of stats */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.stat {
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.stat-value {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+/* Progress bar to show goal progress */
+.progress-wrapper {
+  margin-top: 1rem;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  transition: width 220ms ease-out;
+}
+
+/* =========================
+   JOURNAL CARD
+   ========================= */
+
+.journal-textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.journal-actions {
+  margin-top: 0.6rem;
+}
+
+.journal-status {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* =========================
+   HISTORY + CHART
+   ========================= */
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-container {
+  margin-top: 0.8rem;
+  height: 180px;
+}
+
+/* Recent entries list */
+.entries-list-wrapper {
+  margin-top: 1.1rem;
+}
+
+.entries-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* I use a vertical list of mini cards for entries */
+.entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.entry-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 0.7fr;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.9rem;
+  background: var(--bg-soft);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 620px) {
+  .entry-row {
+    grid-template-columns: 1.2fr 1fr;
+    grid-auto-rows: auto;
+  }
+}
+
+.entry-meal {
+  font-weight: 600;
+}
+
+.entry-notes {
+  color: var(--text-muted);
+}
+
+.entry-calories {
+  justify-self: flex-end;
+  font-weight: 600;
+}
+
+/* =========================
+   UTILITY
+   ========================= */
+
+.entries-empty {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
