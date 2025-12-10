@@ -9,177 +9,273 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header>
-    <nav aria-label="Primary">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="about.html">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="hero-wrap" role="banner">
-      <div class="header_text">
-        <h1>Nina Heinemann De La Fuente</h1>
-        <p class="tagline">Communication Studies &amp; Data Analytics/Digital Culture</p>
-        <p class="value">
-          I’m the kind of person who sees both the details and the vibe — I like turning ordinary projects into something people actually want to look at and engage with.
-        </p>
+    <div class="site-shell top-bar">
+      <!-- 1. PERSONAL LOGO – NOT “NH” -->
+      <div class="logo-pill">
+        <span class="logo-mark">N</span>
+        <span class="logo-text">Nina Heinemann</span>
       </div>
 
-      <div class="header_pic">
-        <img src="images/profile.jpg" alt="Portrait of Nina Heinemann">
+      <nav aria-label="Primary">
+        <a href="#top" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="hero-wrap" role="banner">
+      <div class="site-shell hero-inner">
+        <div class="header_text">
+          <p class="eyebrow">Portfolio · WRIT 40363</p>
+          <h1>Nina Heinemann De La Fuente</h1>
+          <p class="tagline">Communication Studies &amp; Data Analytics / Digital Culture</p>
+          <p class="value">
+            I blend communication, design, and data to build digital work that feels clean, intentional, and easy to interact with.
+          </p>
+        </div>
+
+        <div class="header_pic">
+          <img src="images/profile.jpg" alt="Portrait of Nina Heinemann">
+        </div>
       </div>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- About -->
-    <section class="about section">
-      <h2 class="section-label">About me</h2>
-      <div class="cols">
-        <p>
-          I’m Nina Heinemann, a senior at Texas Christian University, double-majoring in Communication Studies and Data Analytics &amp; Digital Culture. My academic journey lets me work at the intersection of communication, media, and technology—building both analytical and creative skills.
-        </p>
-        <p>
-          I’m passionate about marketing, digital design, and data analytics—and I enjoy bringing these skills together. My experience includes managing social media, developing branding concepts, exploring web design, and using data to shape creative strategies. I’m adaptable and curious, always learning new tools and approaches to create work that looks good, tells a story, and makes an impact.
-        </p>
-        <p>
-          My long-term goal is to lead a marketing department and eventually establish my own business, where I can combine creativity, strategic thinking, and leadership. Outside of work, I enjoy photography, interior design, pilates, and tennis, and I value time with friends and family.
-        </p>
-      </div>
-    </section>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="site-shell">
+        <h2 class="section-label">About me</h2>
+        <div class="cols">
+          <p>
+            I’m Nina Heinemann, a senior at Texas Christian University, double-majoring in Communication Studies and Data Analytics &amp; Digital Culture. I’m interested in how stories, visuals, and data all work together.
+          </p>
+          <p>
+            I love marketing, digital design, and analytics. I’ve managed social media, helped with branding, experimented with web design, and used data to make projects more strategic. My favorite work is both pretty and practical.
+          </p>
+          <p>
+            I’m originally from Guatemala, which has shaped my perspective, my style, and my love for color and design. Long term, I’d like to lead a marketing team and eventually build my own brand or business.
+          </p>
+        </div>
 
-    <!-- Skills -->
-    <section class="skills section">
-      <h2 class="section-label">skills</h2>
-      <div class="skill-columns">
-        <div>
-          <h3>Technical &amp; Data</h3>
-          <ul>
-            <li>HTML &amp; CSS</li>
-            <li>Python (beginner)</li>
-            <li>R Studio (basic analysis)</li>
-            <li>Gephi (network viz)</li>
-            <li>Data Analysis (Excel, STATA, Power BI, Salesforce)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Design &amp; Creative</h3>
-          <ul>
-            <li>Adobe Creative Suite (PS, AI, ID)</li>
-            <li>Canva</li>
-            <li>Visual Studio Code</li>
-            <li>GitHub Desktop</li>
-            <li>TouchStay (interactive content)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Professional Tools</h3>
-          <ul>
-            <li>Social Media Strategy</li>
-            <li>Monday.com &amp; Typeform</li>
-            <li>Slack</li>
-            <li>Microsoft Office (PowerPoint, Excel, Word)</li>
-          </ul>
+        <!-- ABOUT PHOTO STRIP (Guatemala, Fort Worth, TCU) -->
+        <div class="about-gallery">
+          <figure>
+            <img src="images/guatemala.jpg" alt="Landscape photo from Guatemala">
+            <figcaption>Guatemala — home</figcaption>
+          </figure>
+          <figure>
+            <img src="images/fort-worth.jpg" alt="View of Fort Worth">
+            <figcaption>Fort Worth — college life</figcaption>
+          </figure>
+          <figure>
+            <img src="images/tcu-commons.jpg" alt="TCU campus">
+            <figcaption>TCU campus</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="projects section">
-      <h2 class="section-label">projects</h2>
+    <!-- EXPERIENCE (personal/professional projects) -->
+    <section id="experience" class="section">
+      <div class="site-shell">
+        <h2 class="section-label">Experience</h2>
 
-      <article class="project">
-        <div class="project-meta">1.</div>
-        <h3 class="project-title">DEC Network Lunch &amp; Learn Series</h3>
-        <p class="project-desc">Coordinated professional events and designed marketing materials for community engagement.</p>
-        <p class="project-tags">Event planning · Communication · Design</p>
-      </article>
+        <div class="card-grid">
+          <article class="project">
+            <div class="project-meta">1.</div>
+            <h3 class="project-title">DEC Network Lunch &amp; Learn Series</h3>
+            <p class="project-desc">
+              Coordinated “Lunch &amp; Learn” events, supported logistics, and designed marketing materials to promote programs for local entrepreneurs.
+            </p>
+            <p class="project-tags">Event planning · Communication · Design</p>
+          </article>
 
-      <article class="project">
-        <div class="project-meta">2.</div>
-        <h3 class="project-title">Casa Fika Website</h3>
-        <p class="project-desc">Built a guestbook-style interactive website using TouchStay for a hospitality project.</p>
-        <p class="project-tags">Web design · UX · Content creation</p>
-      </article>
+          <article class="project">
+            <div class="project-meta">2.</div>
+            <h3 class="project-title">Casa Fika Website</h3>
+            <p class="project-desc">
+              Built a guestbook-style interactive website using TouchStay for a hospitality project, focusing on warm visuals and simple navigation.
+            </p>
+            <p class="project-tags">Web design · UX · Content creation</p>
+          </article>
 
-      <article class="project">
-        <div class="project-meta">3.</div>
-        <h3 class="project-title">WRIT 40363 Portfolio Site</h3>
-        <p class="project-desc">Personal portfolio website highlighting academic and professional projects.</p>
-        <p class="project-tags">HTML · CSS · Digital storytelling</p>
-      </article>
+          <article class="project">
+            <div class="project-meta">3.</div>
+            <h3 class="project-title">WRIT 40363 Portfolio Site</h3>
+            <p class="project-desc">
+              Designed and coded this portfolio to organize my class projects and experience in a way that feels clean, soft, and easy to skim.
+            </p>
+            <p class="project-tags">HTML · CSS · Digital storytelling</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact section">
-      <h2 class="section-label">contact</h2>
-      <ul class="contact-list">
-        <li>Email: <a href="mailto:ninaheinemann@tcu.edu">ninaheinemann@tcu.edu</a></li>
-        <li>LinkedIn:
-          <a href="https://www.linkedin.com/in/nina-heinemanndlf/" target="_blank" rel="noopener">Nina Heinemann</a>
-        </li>
-        <li>Portfolio: <span>Coming soon</span></li>
-      </ul>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="site-shell">
+        <h2 class="section-label">Skills</h2>
+
+        <div class="skill-columns">
+          <div class="skill-card">
+            <h3>Technical &amp; Data</h3>
+            <ul>
+              <li>HTML &amp; CSS</li>
+              <li>Python (beginner)</li>
+              <li>R Studio (basic analysis)</li>
+              <li>Gephi (network visualization)</li>
+              <li>Data Analysis (Excel, STATA, Power BI, Salesforce)</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Design &amp; Creative</h3>
+            <ul>
+              <li>Adobe Creative Suite (Photoshop, Illustrator, InDesign)</li>
+              <li>Canva &amp; presentation design</li>
+              <li>Photography &amp; visual storytelling</li>
+              <li>Visual Studio Code &amp; GitHub Desktop</li>
+              <li>TouchStay (interactive content)</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Professional Tools</h3>
+            <ul>
+              <li>Social media strategy &amp; content planning</li>
+              <li>Monday.com &amp; Typeform</li>
+              <li>Slack &amp; Microsoft Office</li>
+              <li>Client communication &amp; presentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS (extra section instead of honors) -->
+    <section id="highlights" class="section">
+      <div class="site-shell">
+        <h2 class="section-label">Highlights</h2>
+        <p class="section-intro">
+          A few things that shape how I work: I care about details, aesthetics, and how people actually feel using a site or interacting with a project.
+        </p>
+
+        <div class="highlight-grid">
+          <article class="highlight-card">
+            <h3>Creative direction</h3>
+            <p>
+              I like thinking about the overall vibe of a project—colors, typography, and visuals that make everything feel cohesive and intentional.
+            </p>
+          </article>
+
+          <article class="highlight-card">
+            <h3>Digital storytelling</h3>
+            <p>
+              My communication background helps me organize information and explain ideas clearly, whether it’s a website, a presentation, or social content.
+            </p>
+          </article>
+
+          <article class="highlight-card">
+            <h3>Data-informed decisions</h3>
+            <p>
+              With data analytics, I’m comfortable using numbers, feedback, and testing to refine designs and make projects more effective, not just pretty.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROJECTS (class projects with LINKS) -->
+    <section id="projects" class="section">
+      <div class="site-shell">
+        <h2 class="section-label">Course Projects for WRIT 40363</h2>
+        <p class="section-intro">
+          These four projects show my growth from simple layouts to fully interactive web apps using JavaScript, Json, CSS and Python.
+        </p>
+
+        <ul class="project-list">
+          <li>
+            <h3>
+              <a href="projects/project1-original/index.html">
+                Project 1: Personal Portfolio
+              </a>
+            </h3>
+            <p>
+              A basic personal site that introduced semantic HTML, CSS, and responsive layout.
+            </p>
+          </li>
+
+          <li>
+            <h3>
+              <a href="projects/project2-tracker/">
+                Project 2: Local Favorites Tracker
+              </a>
+            </h3>
+            <p>
+              An interactive tracker for my favorite local spots using JavaScript, filtering, and localStorage.
+            </p>
+          </li>
+
+          <li>
+            <h3>
+              <a href="projects/project3-dashboard/">
+                Project 3: Personal Data Dashboard
+              </a>
+            </h3>
+            <p>
+              A dashboard with live weather, quotes, and tasks plus theme toggles and API-driven content.
+            </p>
+          </li>
+
+          <li>
+            <h3>
+              <a href="projects/project4-zed/index.html">
+                Project 4: Project Zed
+              </a>
+            </h3>
+            <p>
+              My capstone web app that ties together design, interactivity, and persistent data storage.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="site-shell">
+        <h2 class="section-label">Contact</h2>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:ninaheinemann@tcu.edu">ninaheinemann@tcu.edu</a></li>
+          <li>LinkedIn:
+            <a href="https://www.linkedin.com/in/nina-heinemanndlf/" target="_blank" rel="noopener">Nina Heinemann</a>
+          </li>
+          <li>Location: Guatemala, Guatemala City</li>
+        </ul>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Nina Heinemann De La Fuente</p>
+    <div class="site-shell footer-inner">
+      <p>&copy; 2025 Nina Heinemann De La Fuente</p>
+      <a href="#top" class="footer-top-link">Back to top</a>
+    </div>
   </footer>
 </body>
 </html>
 
-
-<section id="projects">
-  <h2>Course Projects for WRIT 40363</h2>
-
-  <ul class="project-list">
-
-    <li>
-      <h3>
-        <a href="projects/project1-original/">
-          Project 1: Personal Portfolio
-        </a>
-      </h3>
-      <p>The first project where I built a basic personal site using HTML & CSS.</p>
-    </li>
-
-    <li>
-      <h3>
-        <a href="projects/project2-tracker/">
-          Project 2: Local Favorites Tracker
-        </a>
-      </h3>
-      <p>An interactive app to save and organize my favorite local places using JavaScript.</p>
-    </li>
-
-    <li>
-      <h3>
-        <a href="projects/project3-dashboard/">
-          Project 3: Personal Data Dashboard
-        </a>
-      </h3>
-      <p>A dashboard with live weather, quotes, and theme toggles — built with APIs and JS.</p>
-    </li>
-
-    <li>
-      <h3>
-        <a href="projects/project4-zed/">
-          Project 4: Project Zed
-        </a>
-      </h3>
-      <p>My final project — an original interactive web application using everything learned in the course.</p>
-    </li>
-
-  </ul>
-</section>
